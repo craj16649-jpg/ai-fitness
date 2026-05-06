@@ -1,0 +1,195 @@
+{
+  "intents": [
+
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hi","hello","hey","good morning","good evening",
+        "hi bot","hello assistant","hey bro","hi fitness coach"
+      ],
+      "responses": [
+        "👋 Hello! Ready for your workout today?",
+        "💪 Hi there! Tell me your fitness goal.",
+        "🔥 Welcome back! Let’s crush today’s workout!"
+      ]
+    },
+
+    {
+      "tag": "small_talk",
+      "patterns": [
+        "how are you","who are you","are you there",
+        "what are you doing","what is your name"
+      ],
+      "responses": [
+        "I'm your AI Fitness Assistant 🤖💪 Ready to help you train!",
+        "I'm here to help you build your best body!"
+      ]
+    },
+
+    {
+      "tag": "weight_loss",
+      "patterns": [
+        "weight loss","lose weight","fat loss","burn fat",
+        "reduce belly fat","diet for weight loss",
+        "i am overweight","cutting plan",
+        "how to reduce fat","belly fat workout"
+      ],
+      "responses": [
+        "🔥 WEIGHT LOSS PLAN:\n\n🏃 Cardio – 30 mins\n💪 Squats – 3x15\n🔥 Pushups – 3x10\n🧘 Plank – 3x30 sec\n\n🥗 Reduce sugar\n💧 Drink 3L water\n🍗 Eat high protein",
+        "Consistency + calorie deficit is the key to fat loss 💪"
+      ]
+    },
+
+    {
+      "tag": "gain_muscle",
+      "patterns": [
+        "muscle gain","gain muscle","build muscle",
+        "bulk up","get stronger","weight gain",
+        "how to gain weight","increase muscle mass"
+      ],
+      "responses": [
+        "🔥 MUSCLE GAIN PLAN:\n🏋️ Train 4–5 days/week\n🍗 Eat high protein (1.5g/kg bodyweight)\n💤 Sleep 7–8 hrs\nFocus on progressive overload!",
+        "Lift heavy. Eat big. Recover well. Repeat."
+      ]
+    },
+
+    {
+      "tag": "workout_plan",
+      "patterns": [
+        "workout plan","gym routine","exercise plan",
+        "home workout","full body workout",
+        "weekly workout schedule"
+      ],
+      "responses": [
+        "📅 WEEKLY SPLIT:\nMon–Chest\nTue–Back\nWed–Legs\nThu–Shoulders\nFri–Arms\nSat–Abs\nSun–Rest",
+        "Train each muscle group once per week for best recovery."
+      ]
+    },
+
+    {
+      "tag": "chest_workout",
+      "patterns": [
+        "chest workout","train chest","build chest",
+        "best chest exercises"
+      ],
+      "responses": [
+        "🔥 CHEST WORKOUT:\nBench Press – 4x8\nIncline DB – 3x10\nChest Fly – 3x12\nPushups – 3x failure"
+      ]
+    },
+
+    {
+      "tag": "back_workout",
+      "patterns": [
+        "back workout","train back","build back",
+        "back exercises"
+      ],
+      "responses": [
+        "🔥 BACK WORKOUT:\nDeadlift – 4x6\nPull-ups – 3x8\nLat Pulldown – 3x12\nSeated Row – 3x10"
+      ]
+    },
+
+    {
+      "tag": "leg_workout",
+      "patterns": [
+        "leg workout","legs workout","train legs",
+        "leg day exercises"
+      ],
+      "responses": [
+        "🔥 LEG WORKOUT:\nSquats – 4x8\nLeg Press – 3x12\nLunges – 3x10\nHam Curl – 3x12"
+      ]
+    },
+
+    {
+      "tag": "abs_workout",
+      "patterns": [
+        "abs workout","ab workout","six pack workout",
+        "core workout","how to get six pack"
+      ],
+      "responses": [
+        "🔥 ABS WORKOUT:\nCrunches – 3x20\nLeg Raises – 3x15\nPlank – 3x60 sec\nRussian Twists – 3x20"
+      ]
+    },
+
+    {
+      "tag": "diet_plan",
+      "patterns": [
+        "diet plan","healthy diet","meal plan",
+        "what should i eat","nutrition plan"
+      ],
+      "responses": [
+        "🥗 BASIC DIET PLAN:\nBreakfast – Oats + Eggs\nLunch – Rice + Chicken\nSnack – Fruits + Nuts\nDinner – Roti + Veggies\n\nHigh protein + Low sugar = Results!"
+      ]
+    },
+
+    {
+      "tag": "health_tips",
+      "patterns": [
+        "health tips","fitness tips",
+        "how to stay healthy","daily health advice"
+      ],
+      "responses": [
+        "💡 HEALTH TIPS:\n1️⃣ Drink 3L water\n2️⃣ Sleep 7–8 hrs\n3️⃣ Walk 8k–10k steps daily\n4️⃣ Avoid junk food"
+      ]
+    },
+
+    {
+      "tag": "motivation",
+      "patterns": [
+        "motivate me","i feel lazy",
+        "no motivation","give me motivation",
+        "i want inspiration"
+      ],
+      "responses": [
+        "🔥 Discipline > Motivation.",
+        "Your body can handle it.",
+        "No pain. No gain. 💪"
+      ]
+    },
+
+    {
+      "tag": "thanks",
+      "patterns": [
+        "thanks","thank you","thanks a lot","ok thanks"
+      ],
+      "responses": [
+        "You're welcome 💪",
+        "Happy to help!",
+        "Anytime! Stay strong!"
+      ]
+    },
+
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye","goodbye","see you","talk later"
+      ],
+      "responses": [
+        "👋 Goodbye! Stay fit!",
+        "💪 Keep training hard!",
+        "See you tomorrow!"
+      ]
+    },
+
+    {
+      "tag": "bmi",
+      "patterns": [
+        "calculate bmi",
+        "check my bmi",
+        "bmi calculator",
+        "what is my bmi"
+      ],
+      "responses": [
+        "Please enter your weight (kg) and height (cm) like this:\nweight 70 height 170"
+      ]
+    },
+
+    {
+      "tag": "fallback",
+      "patterns": [],
+      "responses": [
+        "Sorry, I didn’t understand. Try: chest workout / weight loss / diet plan."
+      ]
+    }
+
+  ]
+}

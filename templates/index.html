@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Fitness Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="home-body">
+
+<!-- NAVBAR -->
+<div class="navbar">
+    💪 AI Fitness Assistant
+</div>
+
+<!-- MAIN CONTAINER -->
+<div class="main-container">
+
+    <!-- LEFT SIDE -->
+    <div class="left-panel">
+        <h1>🔥 BUILD YOUR BEST BODY</h1>
+        <p>Success starts with discipline.</p>
+
+        <ul>
+            <li>💪 Train Hard</li>
+            <li>🥗 Eat Clean</li>
+            <li>😴 Sleep Well</li>
+            <li>📈 Stay Consistent</li>
+        </ul>
+
+        <div class="quote-box">
+            "No Pain No Gain"
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE CHAT -->
+    <div class="chat-container">
+
+        <div class="chat-card">
+
+            <!-- HEADER -->
+            <div class="chat-header">
+                <span class="chat-title">💪 AI Fitness Assistant</span>
+
+                <div class="header-buttons">
+                    <a href="/history" class="history-btn">History 📊</a>
+                    <a href="/logout" class="logout-btn">Logout 🚪</a>
+                </div>
+            </div>
+
+            <!-- CHAT AREA -->
+            <div id="chat-messages" class="chat-messages"></div>
+
+            <!-- INPUT AREA -->
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button onclick="sendMessage()">Send</button>
+                <button onclick="startListening()">🎤</button>
+                <button onclick="toggleVoice()" id="voice-toggle">🔊 ON</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+// ================= VOICE CONTROL =================
+let voiceEnabled = true;
+
+function startListening() {
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+        alert("Voice feature works in Google Chrome only.");
+        return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+
+    recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById("user-input").value = transcript;
+        sendMessage();
+    };
+
+    recognition.start();
+}
+
+function toggleVoice() {
+    voiceEnabled = !voiceEnabled;
+    document.getElementById("voice-toggle").innerText =
+        voiceEnabled ? "🔊 ON" : "🔇 OFF";
+}
+
+function speakText(text) {
+    if (!voiceEnabled) return;
+
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US";
+    speech.rate = 1;
+    speech.pitch = 1;
+
+    window.speechSynthesis.speak(speech);
+}
+
+// ================= CHAT FUNCTION =================
+function sendMessage() {
+
+    var input = document.getElementById("user-input");
+    var message = input.value.trim();
+    if (message === "") return;
+
+    var chatBox = document.getElementById("chat-messages");
+
+    // Show user message
+    chatBox.innerHTML += "<div class='user-msg'>You: " + message + "</div>";
+
+    fetch("/get", {
+        method: "POST",
+        body: new URLSearchParams({msg: message}),
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+    })
+    .then(response => response.json())   // ✅ CHANGED TO JSON
+    .then(data => {
+
+        let botReply = data.text.replace(/\n/g, "<br>");
+        let botHtml = "<div class='bot-msg'>Bot: " + botReply + "</div>";
+
+        // ✅ SHOW VIDEOS IF AVAILABLE
+        if (data.videos && data.videos.length > 0) {
+            data.videos.forEach(function(video) {
+                botHtml += `
+                    <br>
+                    <iframe width="300" height="200"
+                    src="${video.replace("watch?v=", "embed/")}"
+                    frameborder="0"
+                    allowfullscreen>
+                    </iframe>
+                `;
+            });
+        }
+
+        chatBox.innerHTML += botHtml;
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        speakText(data.text);
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+
+    input.value = "";
+}
+
+// Enter key support
+document.getElementById("user-input")
+.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+});
+
+</script>
+
+</body>
+</html>

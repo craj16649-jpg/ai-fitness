@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Workout History</title>
+</head>
+<body>
+
+<h2>Your Workout History 💪</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Workout Type</th>
+        <th>Duration (mins)</th>
+        <th>Date</th>
+    </tr>
+
+    {% for workout in history %}
+    <tr>
+        <td>{{ workout[0] }}</td>
+        <td>{{ workout[1] }}</td>
+        <td>{{ workout[2] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="/home">Back to Home</a>
+
+</body>
+</html>
